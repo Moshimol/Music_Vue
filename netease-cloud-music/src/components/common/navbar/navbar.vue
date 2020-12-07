@@ -21,10 +21,12 @@ export default {
   text-align: center;
   /* box-shadow: 0 1px 5px rgba(0,0,0,0.2); */
 }
+
 .left,
 .right {
   width: 60px;
 }
+
 .center {
   /* flex为1的时候 会自动调整宽度 */
   flex: 1;

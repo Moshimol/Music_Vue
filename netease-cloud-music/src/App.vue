@@ -1,15 +1,31 @@
 <template>
   <div id="app">
     <music-navbar class="appnav"></music-navbar>
+    <left-popup></left-popup>
+    <transition mode="">
+      <!-- exclude 不会保存对应的组件 -->
+      <keep-alive
+        exclude="SheetInfo,PlaySong,MvPlay,ClassifyInfo,StationDetail,DetailPlay,Information,Played,FansList,Follow,moreAlbum,SearchDetail"
+      >
+        <!-- 在组件切换的时候添加动画 -->
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
+    <play-nav></play-nav>
   </div>
 </template>
 
 <script>
-import musicNavbar from "components/context/musicNavbar/MusicNavbar";
+import musicNavbar from "./components/context/musicNavbar/MusicNavbar";
+import playNav from "./components/context/playNav/PlayNav";
+import LeftPopup from "./views/leftPopup/LeftPopup";
+
 export default {
   name: "App",
   components: {
     musicNavbar,
+    playNav,
+    LeftPopup,
   },
 };
 </script>
