@@ -18,7 +18,10 @@ VueRouter.prototype.push = function push(location) {
   return originalReplace.call(this, location).catch(err => err)
 }
 
-const routes = [{ path: '/myMessage/login', component: () => import('components/context/login/Login') }]
+const routes = [
+  { path: '/myMessage/login', component: () => import('components/context/login/Login') },
+  { path: '/myMessage/login/phoneLogin', component: () => import('components/context/phoneLogin/PhoneLogin')  }
+]
 
 const router = new VueRouter({
   mode: 'history',
