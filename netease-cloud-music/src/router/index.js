@@ -18,7 +18,16 @@ VueRouter.prototype.push = function push(location) {
   return originalReplace.call(this, location).catch(err => err)
 }
 
+
+// 组件懒加载
+const discover = () => import('views/discover/Discover')  // 发现页面组件
+
 const routes = [
+  { path: '/', redirect: '/discover' },
+  {
+    path: '/discover',
+    component: discover,
+  },
   { path: '/myMessage/login', component: () => import('components/context/login/Login') },
   { path: '/myMessage/login/phoneLogin', component: () => import('components/context/phoneLogin/PhoneLogin')  }
 ]

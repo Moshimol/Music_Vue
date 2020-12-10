@@ -28,6 +28,7 @@ export default {
       this.$router.go(-1);
     },
     phoneLogin() {
+      con;
       this.$router.push("/myMessage/login");
     },
   },
