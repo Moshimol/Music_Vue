@@ -1,7 +1,7 @@
 <template>
   <navbar id="navbar">
     <div id="leftbox" @click="leftPopup" slot="left">
-      <img src="assets/img/common/hanbaotu.png" alt="" />
+      <img src="../../../assets/img/common/hanbaotu.png" alt="" />
     </div>
     <div slot="center">
       <span
@@ -15,13 +15,13 @@
       </span>
     </div>
     <div id="rightbox" slot="right" @click="toSearch">
-      <img src="assets/img/common/sousuo.png" alt="" />
+      <img src="../../../assets/img/common/sousuo.png" alt="" />
     </div>
   </navbar>
 </template>
 
 <script>
-import navbar from "./components/common/navbar/navbar"; // 导航栏组件
+import navbar from "../../common/navbar/navbar";
 export default {
   data() {
     return {
