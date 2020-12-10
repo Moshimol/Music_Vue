@@ -6,5 +6,5 @@ export function getUserDetail(uid) {
     params: {
       uid
     }
-  })
+  });
 }

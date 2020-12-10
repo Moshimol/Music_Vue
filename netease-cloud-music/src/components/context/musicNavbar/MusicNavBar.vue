@@ -33,6 +33,37 @@ export default {
     leftPopup() {
       this.$EventBus.$emit("openPopup", () => {}); // 事件总线
     },
+    toSearch() {
+      // TODO 跳转到搜索页面
+      console.warn("toSearch");
+    },
+    itemClick(index) {
+      this.currentIndex = index;
+      switch (index) {
+        case 0:
+          this.$router.push("/myMessage");
+          break;
+        case 1:
+          this.$router.push("/discover");
+          break;
+        case 2:
+          this.$router.push("/cloudVillage");
+          break;
+        case 3:
+          // 判断用户是否有登录
+          if (!this.$store.state.cookie) {
+            this.$toast.show("您需要先登录哦~", 1900);
+            setTimeout(() => {
+              this.$router.push("/myMessage/login");
+            }, 1000);
+          } else {
+            this.$router.push("/video");
+          }
+          break;
+        default:
+          break;
+      }
+    },
   },
   components: {
     navbar,
