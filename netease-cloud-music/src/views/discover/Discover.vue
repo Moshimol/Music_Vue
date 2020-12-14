@@ -7,6 +7,7 @@
 
 <script>
 import DiscoverSwiper from "./childrenComps/DiscoverSwiper"; // 轮播图
+import DiscoverSheet from "./childrenComps/DiscoverSheet"; // 热门歌单
 
 import mui from "assets/mui/js/mui.min.js"; // 引入 mui js 文件
 
@@ -19,6 +20,7 @@ export default {
   name: "Discover",
   components: {
     DiscoverSwiper,
+    DiscoverSheet,
   },
   data() {
     return {

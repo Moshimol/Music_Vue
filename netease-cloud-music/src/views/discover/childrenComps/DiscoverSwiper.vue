@@ -36,7 +36,6 @@ export default {
     };
   },
   created() {
-    console.log("12");
     getBanner(1).then((res) => {
       this.swiperList = res.data.banners;
     });
