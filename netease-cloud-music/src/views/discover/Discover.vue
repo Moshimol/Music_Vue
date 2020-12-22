@@ -3,7 +3,7 @@
     <!-- banner列表 -->
     <discover-swiper style="margin-top:54px"> </discover-swiper>
     <!-- 分类导航的页面 -->
-     <div class="mui-content" style="">
+    <div class="mui-content" style="">
       <div id="slider" class="mui-slider">
         <div
           id="sliderSegmentedControl"
@@ -65,12 +65,14 @@
     </div>
     <!--  -->
     <discover-sheet></discover-sheet>
+    <discover-songtop></discover-songtop>
   </div>
 </template>
 
 <script>
 import DiscoverSwiper from "./childrenComps/DiscoverSwiper"; // 轮播图
 import DiscoverSheet from "./childrenComps/DiscoverSheet"; // 热门歌单
+import DiscoverSongtop from "./childrenComps/DiscoverSongTop";  // 新歌速递
 
 import mui from "assets/mui/js/mui.min.js"; // 引入 mui js 文件
 
@@ -84,6 +86,7 @@ export default {
   components: {
     DiscoverSwiper,
     DiscoverSheet,
+    DiscoverSongtop
   },
   data() {
     return {
@@ -103,18 +106,15 @@ export default {
       }
     },
     // 点击进入日推界面
-    recommandSong(){
+    recommandSong() {
       if (!this.$store.state.cookie) {
-        this.$toast.show("请先登录",2000);
-        setTimeout(() => {
-
-        },1000);
+        this.$toast.show("请先登录", 2000);
+        setTimeout(() => {}, 1000);
       } else {
-
       }
-    }
+    },
   },
-  mounted(){
+  mounted() {
     mui(".mui-scroll-wrapper").scroll({
       bounce: true, //是否回弹
       scrollY: false, //是否竖向滚动
@@ -122,22 +122,20 @@ export default {
       startX: 0, //初始化时滚动至x
       startY: 0, //初始化时滚动至y
       indicators: true, //是否显示滚动条
-    })
+    });
   },
-  created(){
-    
-  }
+  created() {},
 };
 </script>
 
 <style>
-.Discover{
-    touch-action: none;
-    margin-bottom: 55px;
+.Discover {
+  touch-action: none;
+  margin-bottom: 55px;
 }
-.mui-content{
-    margin-top: .399467rem;
-    margin-bottom: .399467rem;
+.mui-content {
+  margin-top: 0.399467rem;
+  margin-bottom: 0.399467rem;
 }
 #slider {
   height: 1.864181rem;
@@ -147,14 +145,14 @@ export default {
 }
 .mui-control-item {
   color: #000 !important;
-  padding: 0 .399467rem !important;
+  padding: 0 0.399467rem !important;
   text-align: center;
   font-size: 0.332889rem;
   height: 1.864181rem;
 }
-.mui-control-item span{
-    position: relative;
-    top: -8px;
+.mui-control-item span {
+  position: relative;
+  top: -8px;
 }
 .img-item {
   width: 1.198402rem;
@@ -169,5 +167,4 @@ export default {
   width: 0.639148rem;
   margin-top: 0.226365rem;
 }
-
 </style>

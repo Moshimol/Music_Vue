@@ -10,6 +10,16 @@ export function getBanner(type) {
   });
 }
 
+// 新歌速递
+export function getSongsTop(type) {
+    return request({
+        url: '/top/song',
+        params: {
+            type
+        }
+    })
+}
+
 // 首页信息
 export function getHomePage(refresh) {
   return request({
