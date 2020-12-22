@@ -3,7 +3,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.config.productionTip = false
+Vue.prototype.$EventBus = new Vue()  // 创建事件总线  全局的事件总线
+
+import 'amfe-flexible/index.js'  // 自适应布局
 
 // 引入 elementui
 import ElementUI from 'element-ui';
@@ -45,9 +47,11 @@ Vue.filter('mvTime',function(time){
 });
 
 // 引入 toast 组件
-import toast from 'components/common/toast'
-Vue.use(toast)  // 安装 toast 组件
+import toast from 'components/common/toast';
+Vue.use(toast);  // 安装 toast 组件
 
+
+Vue.config.productionTip = false;
 
 new Vue({
   router,

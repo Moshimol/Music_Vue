@@ -21,8 +21,9 @@
 </template>
 
 <script>
-import navbar from "../../common/navbar/navbar";
+import navbar from "components/common/navbar/navbar"; // 导航栏组件
 export default {
+  name: "MusicNavbar",
   data() {
     return {
       titleList: ["我的", "发现", "云村", "视频"],
@@ -31,12 +32,15 @@ export default {
   },
   methods: {
     leftPopup() {
-      this.$EventBus.$emit("openPopup", () => {}); // 事件总线
+      this.$EventBus.$emit("openPopup", () => {})  // 事件总线
     },
+
+    // 搜索组件
     toSearch() {
-      // TODO 跳转到搜索页面
-      console.warn("toSearch");
+      this.$router.push("/discover/search");
     },
+
+    // 组件切换
     itemClick(index) {
       this.currentIndex = index;
       switch (index) {
@@ -70,8 +74,10 @@ export default {
   },
 };
 </script>
-
 <style scoped>
+#leftbox {
+  width: 40px;
+}
 #leftbox img {
   width: 20px;
   height: 20px;

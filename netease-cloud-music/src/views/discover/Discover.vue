@@ -2,6 +2,69 @@
   <div class="Discover">
     <!-- banner列表 -->
     <discover-swiper style="margin-top:54px"> </discover-swiper>
+    <!-- 分类导航的页面 -->
+     <div class="mui-content" style="">
+      <div id="slider" class="mui-slider">
+        <div
+          id="sliderSegmentedControl"
+          class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
+        >
+          <div class="mui-scroll">
+            <a class="mui-control-item" @click="recommandSong">
+              <div class="img-item">
+                <img src="~assets/img/discover/rili.svg" alt="" />
+              </div>
+              <span>每日推荐</span>
+            </a>
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/FM.svg" alt="" />
+              </div>
+              <span>私人FM</span>
+            </a>
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/gedan.svg" alt="" />
+              </div>
+              <span>歌单</span>
+            </a>
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/paihang.svg" alt="" />
+              </div>
+              <span>排行榜</span>
+            </a>
+
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/zhibo.svg" alt="" />
+              </div>
+              <span>直播</span>
+            </a>
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/zhuanji.svg" alt="" />
+              </div>
+              <span>数字专辑</span>
+            </a>
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/liaotian.svg" alt="" />
+              </div>
+              <span>唱聊</span>
+            </a>
+            <a class="mui-control-item">
+              <div class="img-item">
+                <img src="~assets/img/discover/youxi.svg" alt="" />
+              </div>
+              <span>游戏专区</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <discover-sheet></discover-sheet>
   </div>
 </template>
 
@@ -39,8 +102,72 @@ export default {
         // 跳转到日推的界面
       }
     },
+    // 点击进入日推界面
+    recommandSong(){
+      if (!this.$store.state.cookie) {
+        this.$toast.show("请先登录",2000);
+        setTimeout(() => {
+
+        },1000);
+      } else {
+
+      }
+    }
   },
+  mounted(){
+    mui(".mui-scroll-wrapper").scroll({
+      bounce: true, //是否回弹
+      scrollY: false, //是否竖向滚动
+      scrollX: true, //是否横向滚动
+      startX: 0, //初始化时滚动至x
+      startY: 0, //初始化时滚动至y
+      indicators: true, //是否显示滚动条
+    })
+  },
+  created(){
+    
+  }
 };
 </script>
 
-<style></style>
+<style>
+.Discover{
+    touch-action: none;
+    margin-bottom: 55px;
+}
+.mui-content{
+    margin-top: .399467rem;
+    margin-bottom: .399467rem;
+}
+#slider {
+  height: 1.864181rem;
+}
+#sliderSegmentedControl {
+  height: 100%;
+}
+.mui-control-item {
+  color: #000 !important;
+  padding: 0 .399467rem !important;
+  text-align: center;
+  font-size: 0.332889rem;
+  height: 1.864181rem;
+}
+.mui-control-item span{
+    position: relative;
+    top: -8px;
+}
+.img-item {
+  width: 1.198402rem;
+  height: 1.198402rem;
+  border-radius: 50%;
+  background-image: linear-gradient(to right, #d84e4e, red);
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 0.133156rem;
+}
+.img-item img {
+  width: 0.639148rem;
+  margin-top: 0.226365rem;
+}
+
+</style>
