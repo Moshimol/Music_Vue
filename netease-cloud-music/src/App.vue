@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import musicNavbar from "./components/context/musicNavbar/MusicNavbar";
+
+import musicNavbar from "./components/context/musicNavbar/MusicNavBar";
 import playNav from "./components/context/playNav/PlayNav";
 import LeftPopup from "./views/leftPopup/LeftPopup";
 
