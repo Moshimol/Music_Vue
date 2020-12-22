@@ -1,34 +1,76 @@
 <template>
   <div class="DiscoverSheet">
     <div class="topTitle">
-      <div class="left-text">懂你的精选歌单</div>
-    </div>
-    <div class="right-button">
+      <div class="left">懂你的精选歌单</div>
+      <div class="right">
         <div class="btn" @click="Sheet">查看更多</div>
       </div>
+    </div>
+    
+    <div class="mui-content" style="">
+      <div id="slider" class="mui-slider">
+        <div
+          id="sliderSegmentedControl"
+          class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
+        >
+          <div class="mui-scroll">
+            <div
+              @click="toSheet(item.id)"
+              v-for="(item, index) in sheetList"
+              :key="index"
+              class="mui-control-item"
+              href="#item1mobile"
+            >
+              <sheet-item :sheetItem="item"></sheet-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import sheetItem from "components/context/sheetItem/SheetItem";
+import { toStringNum } from "common/common";
+import { getHotSheet } from "network/discover";
+
 export default {
   name: "DiscoverSheet",
   data() {
     return {
       offset: -1,
-      sheetList: [],
+      sheetList: [], // 歌单数组
     };
   },
-  components: {},
+  components: {
+    sheetItem,
+  },
   methods: {
     toSheet(id) {
-      // 跳转到歌单的界面
+      this.$router.push("/playDetail/" + id + "&" + false);
     },
-    sheet() {},
+
+    Sheet() {
+      this.$router.push("/discover/moreSheet");
+    },
+  },
+  created() {
+    getHotSheet("hot", "全部", 6, this.offset * 6).then((res) => {
+      for (const item of res.data.playlists) {
+        this.sheetList.push({
+          id: item.id,
+          rcmdtext: item.name,
+          desc: item.description,
+          picUrl: item.coverImgUrl,
+          playCount: toStringNum(item.playCount),
+        });
+      }
+    });
   },
 };
 </script>
-
-<style>
+<style scoped>
 .DiscoverSheet {
   margin-top: 0.532623rem;
 }
@@ -41,27 +83,20 @@ export default {
 #sliderSegmentedControl {
   height: 100%;
 }
-
 .topTitle {
   width: 100%;
   display: flex;
   padding: 0 0.319574rem;
 }
-
-.left-text {
+.left {
   flex: 1;
   font-size: 0.426099rem;
   font-weight: 550;
   line-height: 0.665779rem;
 }
-
-.right-button {
+.right {
   flex: 1;
-  position: relative;
-  right: 15px;
-  top: -22px;
 }
-
 .btn {
   float: right;
   width: 1.864181rem;

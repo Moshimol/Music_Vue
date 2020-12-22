@@ -41,6 +41,11 @@ Vue.use(ShareSheet);  // 分享面板
 Vue.use(ImagePreview);
 Vue.use(Popup);
 
+// 图片懒加载
+import VueLazyLoad from 'vue-lazyload'
+// 安装 VueLazyLoad
+Vue.use(VueLazyLoad)
+
 // 时间转换
 Vue.filter('mvTime',function(time){
   return (time / 1000 / 60 <= 9 ? '0' + Math.floor(time / 1000 / 60) :  Math.floor(time / 1000 / 60)) + ':' + (time / 1000 % 60 <= 9 ? '0' + time / 1000 % 60 : time / 1000 % 60)
