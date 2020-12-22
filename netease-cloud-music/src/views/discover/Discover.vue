@@ -11,50 +11,50 @@
         >
           <div class="mui-scroll">
             <a class="mui-control-item" @click="recommandSong">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/rili.svg" alt="" />
               </div>
               <span>每日推荐</span>
             </a>
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/FM.svg" alt="" />
               </div>
               <span>私人FM</span>
             </a>
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/gedan.svg" alt="" />
               </div>
               <span>歌单</span>
             </a>
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/paihang.svg" alt="" />
               </div>
               <span>排行榜</span>
             </a>
 
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/zhibo.svg" alt="" />
               </div>
               <span>直播</span>
             </a>
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/zhuanji.svg" alt="" />
               </div>
               <span>数字专辑</span>
             </a>
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/liaotian.svg" alt="" />
               </div>
               <span>唱聊</span>
             </a>
             <a class="mui-control-item">
-              <div class="img-item">
+              <div class="img">
                 <img src="~assets/img/discover/youxi.svg" alt="" />
               </div>
               <span>游戏专区</span>
@@ -66,13 +66,17 @@
     <!--  -->
     <discover-sheet></discover-sheet>
     <discover-songtop></discover-songtop>
+    <discover-mv></discover-mv>
+    <discover-hotsinger></discover-hotsinger>
   </div>
 </template>
 
 <script>
 import DiscoverSwiper from "./childrenComps/DiscoverSwiper"; // 轮播图
 import DiscoverSheet from "./childrenComps/DiscoverSheet"; // 热门歌单
-import DiscoverSongtop from "./childrenComps/DiscoverSongTop";  // 新歌速递
+import DiscoverSongtop from "./childrenComps/DiscoverSongTop"; // 新歌速递
+import DiscoverMv from "./childrenComps/DiscoverMv"; // 最新MV
+import DiscoverHotsinger from "./childrenComps/DiscoverHotSinger";  // 热门歌手
 
 import mui from "assets/mui/js/mui.min.js"; // 引入 mui js 文件
 
@@ -86,7 +90,9 @@ export default {
   components: {
     DiscoverSwiper,
     DiscoverSheet,
-    DiscoverSongtop
+    DiscoverSongtop,
+    DiscoverMv,
+    DiscoverHotsinger,
   },
   data() {
     return {
@@ -128,7 +134,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .Discover {
   touch-action: none;
   margin-bottom: 55px;
@@ -154,7 +160,7 @@ export default {
   position: relative;
   top: -8px;
 }
-.img-item {
+.img {
   width: 1.198402rem;
   height: 1.198402rem;
   border-radius: 50%;
@@ -163,7 +169,7 @@ export default {
   text-align: center;
   margin-bottom: 0.133156rem;
 }
-.img-item img {
+.img img {
   width: 0.639148rem;
   margin-top: 0.226365rem;
 }

@@ -10,6 +10,17 @@ export function getBanner(type) {
   });
 }
 
+// 热门歌手
+export function getHotSinger(limit, offset) {
+    return request({
+        url: '/top/artists',
+        params: {
+            limit,
+            offset
+        }
+    })
+}
+
 // 新歌速递
 export function getSongsTop(type) {
     return request({
@@ -45,6 +56,18 @@ export function getHotSheet(order, cat = "全部", limit, offset) {
             cat,
             limit,
             offset
+        }
+    })
+}
+
+
+// 最新MV
+export function getNewMv(area, limit) {
+    return request({
+        url: '/mv/first',
+        params: {
+            area,
+            limit
         }
     })
 }

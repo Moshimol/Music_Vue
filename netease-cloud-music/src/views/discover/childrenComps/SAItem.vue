@@ -109,6 +109,9 @@ export default {
   display: flex;
   align-items: center;
 }
+.btn .img {
+  margin-top: -5px;
+}
 .img{
   margin: auto;
 }
