@@ -56,6 +56,10 @@ import toast from 'components/common/toast';
 Vue.use(toast);  // 安装 toast 组件
 
 
+import loading from 'components/common/Loading'
+import { Math } from 'core-js';
+Vue.use(loading);
+
 Vue.config.productionTip = false;
 
 new Vue({
