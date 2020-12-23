@@ -5,6 +5,8 @@
       </my-message-user>
 
       <my-message-login class="login" v-else @toLogin="toLogin"></my-message-login>
+      <!-- 菜单 -->
+      <my-message-menu></my-message-menu>
     </div>
   </div>
 </template>
@@ -12,6 +14,8 @@
 <script>
 
 import MyMessageLogin from "./childrenComps/MyMessageLogin"; // 用户未登录组件
+import MyMessageUser from "./childrenComps/MyMessageUser"; // 用户已登录组件
+import MyMessageMenu from "./childrenComps/MyMessageMenu";
 
 export default {
   name: "MyMessage",
@@ -32,6 +36,8 @@ export default {
   created() {},
   components: {
     MyMessageLogin,
+    MyMessageUser,
+    MyMessageMenu
   }
 };
 </script>

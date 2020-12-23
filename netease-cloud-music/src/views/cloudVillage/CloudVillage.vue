@@ -14,7 +14,7 @@
         </div>
         <div class="fuhao">“</div>
         <div class="textBox">{{ item.content }}</div>
-        <div class="time">{{ item.time | getTime("YYYY年MM月DD日") }}</div>
+        <div class="time">{{ item.time }}</div>
         <div class="music" @click="toMusic(item.songId)">
           <img :src="item.songCoverUrl" alt="" />
           <div class="singer">
@@ -76,6 +76,9 @@ export default {
       this.CommentFloor(this.threadId, this.songId);
     },
     CommentFloor(threadId, songId) {},
+    getTime(){
+
+    }
   },
   created() {
     getHotwall(this.$store.state.cookie).then((res) => {
