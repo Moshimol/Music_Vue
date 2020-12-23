@@ -20,6 +20,10 @@
 </template>
 
 <script>
+
+import { phoneLogin, loginState } from "network/login"; // 网络请求
+import { getUserDetail, getUserPlayList } from "network/user"; // 用户信息
+
 export default {
   name: "Login",
   data: {},
@@ -28,8 +32,57 @@ export default {
       this.$router.go(-1);
     },
     phoneLogin() {
-      con;
-      this.$router.push("/myMessage/login");
+      // 这里直接去做相关登录的APi 
+      // TODO: 需要手机和密码
+      var phoneNumber = "";
+      var password = "";
+      
+      // 手机号 
+      var reg = /^1[3-8][0-9]{9}$/;
+
+      if(reg.test(phoneNumber)) {
+        this.$loading.loadingShow();
+        phoneLogin(phoneNumber, password).then(res => {
+          this.$store.state.cookie = res.data.cookie;
+          if(res.data.code === 200) {
+            this.$toast.show("登录成功！", 1900);
+            this.close();
+
+            this.$store.state.profile.nickName = res.data.profile.nickname; // 用户名
+            this.$store.state.profile.avatarUrl = res.data.profile.avatarUrl; // 头像
+            this.$store.state.profile.userId = res.data.profile.userId; // id
+            this.$store.state.profile.backgroundUrl = res.data.profile.backgroundUrl; // 背景图
+
+            // 获取用户信息
+            getUserDetail(this.$store.state.profile.userId).then((res) => {
+              this.$store.state.profile.level = res.data.level;
+              this.$store.state.profile.listenSongs = res.data.listenSongs;
+            });
+            // 获取用户的歌单
+            // 获取用户歌单
+            getUserPlayList(this.$store.state.profile.userId).then((res) => {
+              for (const item of res.data.playlist) {
+                this.$store.state.playList.push({
+                    coverImgUrl: item.coverImgUrl,
+                    name: item.name,
+                    id: item.id,
+                    playCount: item.playCount,
+                    trackCount: item.trackCount,
+                    creator: item.creator.nickname,
+                   });
+                }
+            });
+            this.$loading.loadingNo();
+          }
+        },
+        (err) => {
+            this.$toast.show("网络出错！", 1900);
+          }
+        );
+      }else {
+        this.$toast.show("登录成功",2000);
+      }
+
     },
   },
 };

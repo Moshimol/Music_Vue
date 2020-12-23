@@ -22,6 +22,7 @@ VueRouter.prototype.push = function push(location) {
 // 组件懒加载
 const discover = () => import('views/discover/Discover')  // 发现页面组件
 const cloudVillage = () => import('views/cloudVillage/CloudVillage')  // 云村页面组件
+const myMessage = () => import('views/myMessage/MyMessage');  // 个人页面组件
 
 const routes = [
   { path: '/', redirect: '/discover' },
@@ -33,6 +34,7 @@ const routes = [
     path: '/cloudVillage', 
     component: cloudVillage,
   },
+  { path: '/myMessage', component: myMessage },
   { path: '/myMessage/login', component: () => import('components/context/login/Login') },
   { path: '/myMessage/login/phoneLogin', component: () => import('components/context/phoneLogin/PhoneLogin')  },
 ]

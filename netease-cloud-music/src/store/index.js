@@ -15,6 +15,8 @@ export default new Vuex.Store({
       level: '',
       listenSongs: ''
     },
+    // 用户歌单信息
+    playList: [],
   },
   mutations: {
   },
